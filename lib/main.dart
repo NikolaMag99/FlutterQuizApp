@@ -4,7 +4,21 @@ void main() {
   runApp(MyApp());
 }
 
-class MyApp extends StatelessWidget {
+class MyApp extends StatefulWidget {
+  @override
+  MyAppState createState() => MyAppState();
+}
+
+class MyAppState extends State<MyApp> {
+  var index = 0;
+
+  void answerQuestion() {
+    setState(() {
+      index = index + 1;
+    });
+    print(index);
+  }
+
   @override
   Widget build(BuildContext context) {
     var questions = [
@@ -17,22 +31,22 @@ class MyApp extends StatelessWidget {
           title: Text('dr Paun'),
         ),
         body: Column(
-          children: <Widget>[
-            Text('The question!'),
+          children: [
+            Text(questions[index]),
             ElevatedButton(
-              onPressed: null,
+              onPressed: answerQuestion,
               child: Text('Nadal'),
             ),
             ElevatedButton(
-              onPressed: null,
+              onPressed: answerQuestion,
               child: Text('Federer'),
             ),
             ElevatedButton(
-              onPressed: null,
+              onPressed: answerQuestion,
               child: Text('Djokovic'),
             ),
             ElevatedButton(
-              onPressed: null,
+              onPressed: answerQuestion,
               child: Text('Zverev'),
             )
           ],
