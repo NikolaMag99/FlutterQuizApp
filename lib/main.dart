@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
-import './question.dart';
-import './answer.dart';
+import './quiz.dart';
+import './result.dart';
 
 void main() {
   runApp(MyApp());
@@ -15,7 +15,7 @@ class MyApp extends StatefulWidget {
 class _MyAppState extends State<MyApp> {
   var _index = 0;
 
-  final questions = const [
+  final _questions = const [
     {
       'questionText': 'Best tennis player?',
       'answers': ['Djokovic', 'Federer', 'Nadal', 'Zverev'],
@@ -31,7 +31,7 @@ class _MyAppState extends State<MyApp> {
   ];
 
   void _answerQuestion() {
-    if (_index < questions.length) {
+    if (_index < _questions.length) {
       print('nesto');
     }
     setState(() {
@@ -47,19 +47,13 @@ class _MyAppState extends State<MyApp> {
         appBar: AppBar(
           title: Text('dr Paun'),
         ),
-        body: _index < questions.length
-            ? Column(
-                children: [
-                  Question(questions[_index]['questionText'] as String),
-                  ...(questions[_index]['answers'] as List<String>)
-                      .map((answer) {
-                    return Answer(_answerQuestion, answer);
-                  }).toList()
-                ],
+        body: _index < _questions.length
+            ? Quiz(
+                answerQuestion: _answerQuestion,
+                index: _index,
+                questions: _questions,
               )
-            : Center(
-                child: Text('End of Quiz!'),
-              ),
+            : Result(),
       ),
     );
   }
