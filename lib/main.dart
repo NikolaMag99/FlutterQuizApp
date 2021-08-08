@@ -1,22 +1,24 @@
 import 'package:flutter/material.dart';
 
+import './question.dart';
+
 void main() {
   runApp(MyApp());
 }
 
 class MyApp extends StatefulWidget {
   @override
-  MyAppState createState() => MyAppState();
+  _MyAppState createState() => _MyAppState();
 }
 
-class MyAppState extends State<MyApp> {
-  var index = 0;
+class _MyAppState extends State<MyApp> {
+  var _index = 0;
 
-  void answerQuestion() {
+  void _answerQuestion() {
     setState(() {
-      index = index + 1;
+      _index = _index + 1;
     });
-    print(index);
+    print(_index);
   }
 
   @override
@@ -32,21 +34,21 @@ class MyAppState extends State<MyApp> {
         ),
         body: Column(
           children: [
-            Text(questions[index]),
+            Question(questions[_index]),
             ElevatedButton(
-              onPressed: answerQuestion,
+              onPressed: _answerQuestion,
               child: Text('Nadal'),
             ),
             ElevatedButton(
-              onPressed: answerQuestion,
+              onPressed: _answerQuestion,
               child: Text('Federer'),
             ),
             ElevatedButton(
-              onPressed: answerQuestion,
+              onPressed: _answerQuestion,
               child: Text('Djokovic'),
             ),
             ElevatedButton(
-              onPressed: answerQuestion,
+              onPressed: _answerQuestion,
               child: Text('Zverev'),
             )
           ],
