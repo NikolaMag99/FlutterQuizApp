@@ -28,11 +28,9 @@ class Result extends StatelessWidget {
             style: TextStyle(fontSize: 34, fontWeight: FontWeight.bold),
             textAlign: TextAlign.center,
           ),
-          // ignore: deprecated_member_use
-          FlatButton(
+          ElevatedButton(
             onPressed: resetHandler,
             child: Text('Restart'),
-            textColor: Colors.blue,
           )
         ],
       ),
